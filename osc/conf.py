@@ -86,16 +86,6 @@ except:
         pass
 
 
-def _get_processors():
-    """
-    get number of processors (online) based on
-    SC_NPROCESSORS_ONLN (returns 1 if config name does not exist).
-    """
-    try:
-        return os.sysconf('SC_NPROCESSORS_ONLN')
-    except ValueError as e:
-        return 1
-
 DEFAULTS = {'apiurl': 'https://api.opensuse.org',
             'user': 'your_username',
             'pass': 'your_password',
@@ -118,7 +108,6 @@ DEFAULTS = {'apiurl': 'https://api.opensuse.org',
             'build-kernel': '',                 # optional for VM builds
             'build-initrd': '',                 # optional for VM builds
 
-            'build-jobs': _get_processors(),
             'builtin_signature_check': '1',     # by default use builtin check for verify pkgs
             'icecream': '0',
 
